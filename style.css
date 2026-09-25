@@ -6,51 +6,87 @@
     user-select: none;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
-    touch-action: manipulation; /* Screen zoom aur lag ko roknay k liye */
+    touch-action: manipulation;
 }
 
 body {
-    background-color: #1a0f0a;
+    background-color: #120905;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 10px;
-    overflow-x: hidden;
+    overflow: hidden;
+}
+
+/* Portrait Warning overlay */
+.portrait-warning {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #000;
+    color: #ffd700;
+    z-index: 10000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.phone-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+    animation: rotate 2s infinite ease-in-out;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(90deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Show warning if mobile is in Portrait Mode */
+@media screen and (max-width: 768px) and (orientation: portrait) {
+    .portrait-warning {
+        display: flex;
+    }
 }
 
 .harmonium-container {
-    width: 100%;
-    max-width: 1000px;
-    background: #3d2314;
-    border: 6px solid #231209;
+    width: 100vw;
+    max-width: 1100px;
+    background: #3a1e11;
+    border: 8px solid #201008;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    padding: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Dashboard Styling */
 .dashboard {
-    background: linear-gradient(135deg, #2b180d, #4a2817);
+    background: linear-gradient(135deg, #241209, #442213);
     border: 2px solid #8c532b;
     border-radius: 8px;
-    padding: 10px 15px;
+    padding: 8px 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #f3e5ab;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-    gap: 10px;
+    margin-bottom: 8px;
 }
 
 .brand h1 {
-    font-size: 18px;
+    font-size: 16px;
     color: #ffd700;
 }
 
 .badge {
-    font-size: 10px;
+    font-size: 9px;
     background: #555;
     color: #fff;
     padding: 2px 6px;
@@ -67,48 +103,50 @@ body {
     display: flex;
     gap: 10px;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .control-group {
     display: flex;
     flex-direction: column;
-    font-size: 11px;
+    font-size: 10px;
 }
 
 select {
-    padding: 4px 8px;
-    background: #1a0f0a;
+    padding: 3px 6px;
+    background: #120905;
     color: #f3e5ab;
     border: 1px solid #8c532b;
     border-radius: 4px;
+    font-size: 11px;
 }
 
 .btn-paid {
     background: #ffd700;
-    color: #231209;
+    color: #201008;
     border: none;
-    padding: 6px 12px;
+    padding: 6px 10px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 11px;
     border-radius: 4px;
+    cursor: pointer;
 }
 
-/* Harmonium Keyboard Area */
+/* Harmonium Keyboard & Bellows Area */
 .bellows-wrapper {
-    background: #110804;
-    padding: 15px 10px 10px 10px;
+    background: #0d0603;
+    padding: 12px 8px 8px 8px;
     border-radius: 8px;
-    border: 2px solid #8c532b;
-    overflow-x: auto; /* Small screens par scroll hoga */
+    border: 2px solid #734120;
+    position: relative;
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
 
 .keyboard {
     position: relative;
     display: flex;
-    height: 180px;
-    min-width: 700px; /* Mobile par keys choti na ho, scrollable rahay */
+    height: 160px;
+    min-width: 820px;
 }
 
 .key {
@@ -116,40 +154,44 @@ select {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding-bottom: 8px;
-    font-size: 11px;
+    padding-bottom: 6px;
+    font-size: 10px;
     font-weight: bold;
 }
 
 .key.white {
-    width: 48px;
-    height: 170px;
-    background: linear-gradient(to bottom, #fff 0%, #eee 85%, #ccc 100%);
-    border: 1px solid #000;
+    width: 44px;
+    height: 150px;
+    background: linear-gradient(to bottom, #fff 0%, #f4e8d1 80%, #d8c4a0 100%);
+    border: 1px solid #332115;
     border-radius: 0 0 4px 4px;
-    color: #333;
+    color: #2b180d;
     z-index: 1;
+    box-shadow: inset -2px 0 3px rgba(0,0,0,0.1);
 }
 
 .key.white.active {
-    background: #ddd;
+    background: #d1ba95;
     transform: translateY(2px);
+    box-shadow: inset 0 4px 8px rgba(0,0,0,0.4);
 }
 
 .key.black {
-    width: 28px;
-    height: 100px;
-    background: linear-gradient(to bottom, #333 0%, #000 100%);
+    width: 26px;
+    height: 90px;
+    background: linear-gradient(to bottom, #2b180d 0%, #0d0603 100%);
     border: 1px solid #000;
     border-radius: 0 0 3px 3px;
-    color: #fff;
+    color: #ffd700;
     position: absolute;
     z-index: 2;
+    box-shadow: 2px 4px 6px rgba(0,0,0,0.5);
 }
 
 .key.black.active {
-    background: #222;
+    background: #100602;
     transform: translateY(2px);
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.8);
 }
 
 /* Modal */
@@ -164,14 +206,14 @@ select {
 }
 
 .modal-content {
-    background: #2b180d;
+    background: #241209;
     padding: 20px;
     border-radius: 8px;
     border: 2px solid #ffd700;
     color: #fff;
     text-align: center;
     width: 90%;
-    max-width: 350px;
+    max-width: 320px;
 }
 
 .modal-content input {
@@ -188,12 +230,12 @@ select {
     justify-content: center;
 }
 
-.btn-submit { background: #28a745; color: white; border: none; padding: 8px 12px; border-radius: 4px; }
-.btn-cancel { background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px; }
+.btn-submit { background: #28a745; color: white; border: none; padding: 6px 12px; border-radius: 4px; }
+.btn-cancel { background: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 4px; }
 
 .footer {
     text-align: center;
-    color: #a88a6d;
-    margin-top: 10px;
-    font-size: 11px;
+    color: #8c532b;
+    margin-top: 6px;
+    font-size: 10px;
 }
