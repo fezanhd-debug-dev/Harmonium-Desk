@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Real Harmonium Pro Mobile</title>
+    <title>Professional Harmonium Real Reeds</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Landscape Mode Warning for Small Screens -->
+    <div class="portrait-warning">
+        <div class="phone-icon">📱↻</div>
+        <p>Behtar Tajurbe ke liye Mobile ko **Landscape Mode** (Tirchha) karein</p>
+    </div>
+
     <div class="harmonium-container">
         <!-- Control Dashboard -->
         <header class="dashboard">
             <div class="brand">
-                <h1>Harmonium Pro</h1>
+                <h1>Harmonium Real Reeds</h1>
                 <span class="badge" id="licenseBadge">Free Version</span>
             </div>
 
@@ -29,27 +35,28 @@
                 </div>
 
                 <div class="control-group">
-                    <label for="reedType">Reed Sound:</label>
+                    <label for="reedType">Reed Preset:</label>
                     <select id="reedType">
-                        <option value="female">Female Reed</option>
-                        <option value="male">Male Reed</option>
-                        <option value="organ">Full Coupler</option>
+                        <option value="doubleReed">Double Reed (Bass + Male)</option>
+                        <option value="tripleReed">Triple Reed (Studio Pro)</option>
+                        <option value="female">Single Female Reed</option>
                     </select>
                 </div>
 
-                <button id="unlockBtn" class="btn-paid">Unlock Paid</button>
+                <button id="unlockBtn" class="btn-paid">Unlock Pro Dashboard</button>
             </div>
         </header>
 
         <!-- Main Harmonium Keyboard -->
         <div class="bellows-wrapper">
+            <div class="bellows-texture"></div>
             <div class="keyboard" id="keyboard">
                 <!-- Keys dynamically generated -->
             </div>
         </div>
 
         <footer class="footer">
-            <p>Mobile: Touch keys to play | Desktop: Use Keyboard Keys (A, S, D, F...)</p>
+            <p>Real Harmonium Wood & Reed Synthesizer | Multi-Touch Enabled</p>
         </footer>
     </div>
 
@@ -57,7 +64,7 @@
     <div id="paymentModal" class="modal">
         <div class="modal-content">
             <h2>Unlock Pro Features</h2>
-            <p>Paid version includes studio sound quality and recording.</p>
+            <p>Paid version me Studio Reverb aur Heavy Bass Reeds shamil hain.</p>
             <input type="text" id="licenseKey" placeholder="Enter Key (Try: PRO123)">
             <div class="modal-actions">
                 <button id="activateBtn" class="btn-submit">Activate Pro</button>
